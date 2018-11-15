@@ -7,7 +7,7 @@ Address Book
 The Address Book concept is a very convenient solution for the customers of your shop, that come back.
 Once they provide an address it is saved in the system and can be reused the next time.
 
-**Sylius** handles the address book in a not complex way:
+**Sylius** handles the address book in a simple way:
 
 The Addresses Collection on a Customer
 --------------------------------------
@@ -23,13 +23,13 @@ On the Customer entity we are holding a collection of addresses:
 
 We can operate on it as usual - by adding and removing objects.
 
-Besides the Customer entity has a **default address** field that is the default address used both for shipping and billing,
-the one that will be filling the form fields by default.
+The Customer entity has a **default address** which is used as default for both shipping and billing.
+Form fields will be filled with this address by default.
 
 How to add an address to the address book manually?
 ---------------------------------------------------
 
-If you would like to add an address to the collection of Addresses of a chosen customer that's all what you should do:
+If you would like to add an address to the collection of Addresses of a chosen customer you can do the following:
 
 Create a new address:
 
@@ -47,7 +47,7 @@ Create a new address:
     $address->setStreet('The Burrow');
     $address->setPostcode('000001');
 
-Then find a customer to which you would like to assign it, and add the address.
+Then find a customer to whom you would like to assign and add the address.
 
 .. code-block:: php
 
@@ -55,7 +55,7 @@ Then find a customer to which you would like to assign it, and add the address.
 
     $customer->addAddress($address);
 
-Remember to flush the customer's manager to save this change.
+Remember to flush the customer manager to save this change.
 
 .. code-block:: php
 

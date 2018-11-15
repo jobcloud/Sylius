@@ -4,7 +4,7 @@
 Inventory
 =========
 
-Sylius leverages a very simple approach to inventory management. The current stock of an item is stored on the **ProductVariant** entity as the ``onHand`` value.
+Sylius leverages a very simple approach to inventory management. The current stock of an item is stored in the **ProductVariant** entity as the ``onHand`` value.
 
 InventoryUnit
 -------------

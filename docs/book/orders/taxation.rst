@@ -4,7 +4,7 @@
 Taxation
 ========
 
-Sylius' taxation system allows you to apply appropriate taxes for different items, billing zones and using custom calculators.
+Sylius' taxation system allows you to apply appropriate taxes for different items, billing zones and lets you even use custom calculators.
 
 Tax Categories
 --------------
@@ -12,7 +12,7 @@ Tax Categories
 In order to process taxes in your store, you need to configure at least one **TaxCategory**, which represents a specific type of merchandise.
 If all your items are taxed with the same rate, you can have a simple "Taxable Goods" category assigned to all items.
 
-If you sell various products and some of them have different taxes applicable, you could create multiple categories. For example, "Clothing", "Books" and "Food".
+If you sell various products and some of them have different taxes, you could create multiple categories. For example, "Clothing", "Books" and "Food".
 
 Additionally to tax categories, you can have different zones, in order to apply correct taxes for customers coming from any country in the world.
 
@@ -31,7 +31,7 @@ In order to create a TaxCategory use the dedicated factory. Your TaxCategory req
 
    $this->container->get('sylius.repository.tax_category')->add($taxCategory);
 
-Since now you will have a new TaxCategory available.
+Now you will have a new TaxCategory available.
 
 How to set a TaxCategory on a ProductVariant?
 '''''''''''''''''''''''''''''''''''''''''''''
@@ -57,12 +57,12 @@ A tax rate is essentially a percentage amount charged based on the sales price. 
 * Whether product prices are inclusive of this tax
 * The zone in which the order address must fall within
 * The tax category that a product must belong to in order to be considered taxable
-* Calculator to use for computing the tax
+* A calculator to use for computing the tax
 
 TaxRates included in price
 ''''''''''''''''''''''''''
 
-The **TaxRate** entity has a field for configuring if you would like to have taxes included in the price of a subject or not.
+The **TaxRate** entity has a field to configure if the taxes are included in the price of the subject or not.
 
 If you have a TaxCategory with a 23% VAT TaxRate *includedInPrice* (``$taxRate->isIncludedInPrice()`` returns ``true``),
 then the price shown on the ProductVariant in that TaxCategory will be increased by 23% all the time. See the Behat scenario below:
@@ -76,7 +76,7 @@ then the price shown on the ProductVariant in that TaxCategory will be increased
    And my cart taxes should be "$1.87"
 
 If the TaxRate *will not be included* (``$taxRate->isIncludedInPrice()`` returns ``false``)
-then the price of ProductVariant will be shown without taxes, but when this ProductVariant will be added to cart taxes will be shown in the Taxes Total in the cart.
+then the price of ProductVariant will be shown without taxes, but when this ProductVariant will be added to the cart, taxes will be shown in the Taxes Total in the cart.
 See the Behat scenario below:
 
 .. code-block:: text

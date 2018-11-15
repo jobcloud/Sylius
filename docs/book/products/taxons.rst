@@ -4,11 +4,11 @@
 Taxons
 ======
 
-We understand Taxons in Sylius as you would normally define categories.
-Sylius gives you a possibility to categorize your products in a very flexible way, which is one of the most vital functionalities
+Taxons in Sylius are what you would normally call categories.
+Sylius gives you the possibility to categorize your products in a very flexible way, which is one of the most vital functionalities
 of the modern e-commerce systems.
 The Taxons system in Sylius works in a hierarchical way.
-Let's see exemplary categories trees:
+Let's have a look at an exemplary categories tree:
 
 .. code-block:: php
 

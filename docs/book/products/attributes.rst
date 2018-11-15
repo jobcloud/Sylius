@@ -12,7 +12,7 @@ Attribute
 ---------
 
 The **Attribute** model has a translatable name (like for instance ``Book pages``), code (``book_pages``) and type (``integer``).
-There are a few available types of an Attribute:
+There are a few available **Attribute** types:
 
 * text (*default*)
 * checkbox
@@ -22,7 +22,7 @@ There are a few available types of an Attribute:
 * date
 * datetime
 
-What these types may be useful for?
+Examples, what these types can be used for:
 
 - text - brand of a T-Shirt
 - checkbox - show whether a T-Shirt is made of cotton or not
@@ -35,9 +35,9 @@ What these types may be useful for?
 How to create an Attribute?
 ---------------------------
 
-To give you a better insight into Attributes, let's have a look how to prepare and add an Attribute with a Product to the system programatically.
+To give you a better insight into Attributes, let's have a look at how to prepare and add an Attribute to a Product programatically.
 
-To assign Attributes to Products firstly you will need a factory for ProductAttributes.
+To assign Attributes to Products, first you will need a factory for ProductAttributes.
 The AttributeFactory has a special method createTyped($type), where $type is a string.
 
 The Attribute needs a ``code`` and a ``name`` before it can be saved in the repository.
@@ -55,7 +55,7 @@ The Attribute needs a ``code`` and a ``name`` before it can be saved in the repo
 
    $this->container->get('sylius.repository.product_attribute')->add($attribute);
 
-In order to assign value to your Attribute you will need a factory of ProductAttributeValues,
+In order to assign a value to your Attribute you will need a factory of ProductAttributeValues,
 use it to create a new value object.
 
 .. code-block:: php
@@ -66,7 +66,7 @@ use it to create a new value object.
    /** @var AttributeValueInterface $hardcover */
    $hardcover = $attributeValueFactory->createNew();
 
-Attach the new AttributeValue to your Attribute and set its ``value``, which is what will be rendered in frontend.
+Attach the new AttributeValue to your Attribute and set its ``value``, which is what will be rendered in the frontend.
 
 .. code-block:: php
 
@@ -83,8 +83,8 @@ Finally let's find a product that will have your newly created attribute.
 
    $product->addAttribute($hardcover);
 
-Now let's see what has to be done if you would like to add an attribute of ``integer`` type. Let's find such a one in the repository,
-it will be for example the ``BOOK-PAGES`` attribute.
+Now let's see what has to be done if you would like to add an attribute of ``integer`` type. Let's find one in the repository,
+as example we will use the ``BOOK-PAGES`` attribute.
 
 .. code-block:: php
 

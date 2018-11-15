@@ -4,14 +4,14 @@
 Search
 ======
 
-Having a products search functionality in an eCommerce system is a very popular use case.
-Sylius provides a products search functionality that is a grid filter.
+Having a product search functionality in an eCommerce system is a common use case.
+Sylius provides a product search functionality that is a grid filter.
 
 Grid filters
 ------------
 
-For simple use cases of products search use the **filters of grids**.
-For example, the shop's categories each have a ``search`` filter in the products grid:
+For simple use cases of a product search use the **filters of grids**.
+For example, the shop's categories each have a ``search`` filter in the product grid:
 
 .. code-block:: yaml
 

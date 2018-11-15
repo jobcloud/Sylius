@@ -4,11 +4,10 @@
 Orders
 ======
 
-**Order** model is one of the most important in Sylius, where many concepts of e-commerce meet.
-It represents an order that can be either placed or in progress (cart).
+The **Order** model is one of the most important in Sylius, where many concepts of e-commerce meet.
+It represents an order that is either placed or in progress (cart).
 
-**Order** holds a collection of **OrderItem** instances, which represent products from the shop,
-as its physical copies, with chosen variants and quantities.
+**Order** holds a collection of **OrderItem** instances, which represent products from the shop with chosen variants and quantities.
 
 Each Order is **assigned to the channel** in which it has been created as well as the **language** the customer was using
 while placing the order. The order currency code will be the base currency of the current channel by default.
@@ -26,7 +25,7 @@ To programmatically create an Order you will of course need a factory.
     /** @var OrderInterface $order */
     $order = $orderFactory->createNew();
 
-Then get a channel to which you would like to add your Order. You can get it from the context or from the repository by code for example.
+Then get a channel to which you would like to add your Order. You can get it from the context or from the repository (for example by code).
 
 .. code-block:: php
 
@@ -35,7 +34,7 @@ Then get a channel to which you would like to add your Order. You can get it fro
 
     $order->setChannel($channel);
 
-Next give your order a locale code.
+Next set a locale code for your order.
 
 .. code-block:: php
 
@@ -52,7 +51,7 @@ And a currency code:
 
     $order->setCurrencyCode($currencyCode);
 
-What is more the proper Order instance should also have the **Customer** assigned.
+In addition an Order instance should also have the **Customer** properly assigned.
 You can get it from the repository by email.
 
 .. code-block:: php
@@ -63,7 +62,7 @@ You can get it from the repository by email.
     $order->setCustomer($customer);
 
 A very important part of creating an Order is adding **OrderItems** to it.
-Assuming that you have a **Product** with a **ProductVariant** assigned already in the system:
+Assuming that in your system you have a **Product** with an assigned **ProductVariant**:
 
 .. code-block:: php
 
@@ -71,8 +70,8 @@ Assuming that you have a **Product** with a **ProductVariant** assigned already 
     $variant = $this->container->get('sylius.repository.product_variant')->findOneBy([]);
 
     // Instead of getting a specific variant from the repository
-    // you can get the first variant of off a product by using $product->getVariants()->first()
-    // or use the **VariantResolver** service - either the default one or your own.
+    // you can get the first variant of a product by using $product->getVariants()->first()
+    // or use the **VariantResolver** service - to get either the default one or your own.
     // The default product variant resolver is available at id - 'sylius.product_variant_resolver.default'
 
     /** @var OrderItemInterface $orderItem */
@@ -118,13 +117,13 @@ Order has also its own state, which can have the following values:
 
 .. tip::
 
-    The state machine of order is an obvious extension to the :doc:`state machine of checkout </book/orders/checkout>`.
+    The state machine of the order is an extension of the :doc:`state machine of the checkout </book/orders/checkout>`.
 
 Shipments of an Order
 ---------------------
 
-An **Order** in Sylius holds a collection of Shipments on it. Each shipment in that collection has its own shipping method and has its own state machine.
-This lets you to divide an order into several different shipments that have own shipping states (like sending physical objects via DHL and sending a link to downloadable files via e-mail).
+An **Order** in Sylius holds a collection of Shipments. Each shipment in that collection has its own shipping method and has its own state machine.
+This lets you divide an order into several different shipments that have own shipping states (like sending physical objects via DHL and sending a link to downloadable files via e-mail).
 
 .. tip::
 
@@ -141,7 +140,7 @@ How to add a Shipment to an Order?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 You will need to create a shipment, give it a desired shipping method and add it to the order.
-Remember to process the order using order processor and then flush the order manager.
+Remember to process the order using the order processor and then flush the order manager.
 
 .. code-block:: php
 
@@ -183,7 +182,7 @@ Payments of an Order
 --------------------
 
 An **Order** in Sylius holds a collection of Payments on it. Each payment in that collection has its own payment method and has its own payment state.
-It lets you to divide paying for an order into several different methods that have own payment states.
+It lets you divide paying for an order into several different methods that have own payment states.
 
 .. tip::
 
@@ -200,7 +199,7 @@ How to add a Payment to an Order?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 You will need to create a payment, give it a desired payment method and add it to the order.
-Remember to process the order using order processor and then flush the order manager.
+Remember to process the order using the order processor and then flush the order manager.
 
 .. code-block:: php
 
@@ -229,7 +228,7 @@ two transitions ``request_payment`` and ``pay``.
 
     $this->container->get('sylius.manager.order')->flush();
 
-**If it was the only payment assigned to that order** now the ``paymentState`` of your order will be ``paid``.
+**If it was the only payment assigned to that order** the ``paymentState`` of your order will now be ``paid``.
 
 Learn more
 ----------

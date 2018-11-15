@@ -4,21 +4,22 @@
 Product Associations
 ====================
 
-Associations of products can be used as a marketing tool for suggesting your customers, what products to buy together with
-the one they are currently considering.
-Associations can increase your shop's efficiency. You choose what strategy you prefer. They are fully configurable.
+**ProductAssociations** can be used as a marketing tool to suggest your customers, what other products to buy that go well with
+the ones they currently are considering.
+Associations can increase your shop's efficiency. Since **ProductAssociations** are fully configurable, you choose what strategy
+suits you best.
 
 Association Types
 -----------------
 
-The type of an association can be different. If you sell food you can suggest inspiring ingredients, if you sell products
+**ProductAssociations** can have different **ProductAssociationTypes**. If you sell food you can suggest inspiring ingredients, if you sell products
 for automotive you can suggest buying some tools that may be useful for a home car mechanic.
-Exemplary association types can be: ``up-sell``, ``cross-sell``, ``accessories``, ``alternatives`` and whatever you imagine.
+Exemplary association types can be: ``up-sell``, ``cross-sell``, ``accessories``, ``alternatives`` and whatever you can imagine.
 
 How to create a new Association Type?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Create a new Association Type using a dedicated factory. Give the association a ``code`` and a ``name`` to easily recognize the type.
+Create a new Association Type using a dedicated factory. Give the association a ``code`` and a ``name`` so it's easily recognized.
 
 .. code-block:: php
 
@@ -37,14 +38,14 @@ To have the new association type in the system add it to the repository.
 How to add a new Association to a Product?
 ------------------------------------------
 
-Find in your system a product to which you would like to add an association. We will use a Go Pro camera as an example.
+Select the product to which you would like to add an association. We will use a Go Pro camera as an example.
 
 .. code-block:: php
 
     $product = $this->container->get('sylius.repository.product')->findOneBy(['code' => 'go-pro-camera']);
 
-Next create a new Association which will connect our camera with its accessories. Such an association needs the AssociationType we have created
-in the previous step above.
+Next create a new **ProductAssociation** which will connect our camera with its accessories.
+That association will need the **ProductAssociationType** we have created in the step before.
 
 .. code-block:: php
 
@@ -57,7 +58,7 @@ in the previous step above.
     $association->setType($associationType);
 
 Let's add all products from a certain taxon to the association we have created.
-To do that find a desired taxon by code and get all its products. Perfect accessories for a camera will be SD cards.
+To do that, find a desired taxon by code and get all its products. For example, perfect accessories for a camera are SD cards.
 
 .. code-block:: php
 
@@ -66,7 +67,7 @@ To do that find a desired taxon by code and get all its products. Perfect access
 
     $associatedProducts = $taxon->getProducts();
 
-Having a collection of products from the SD cards taxon iterate over them and add them one by one to the association.
+Having a collection of products of the SD card taxon, iterate over them and add them to the association.
 
 .. code-block:: php
 
@@ -74,7 +75,7 @@ Having a collection of products from the SD cards taxon iterate over them and ad
         $association->addAssociatedProduct($associatedProduct);
     }
 
-Finally add the created association with SD cards to our Go Pro camera product.
+Finally add the created association with the SD cards to your Go Pro camera product.
 
 .. code-block:: php
 

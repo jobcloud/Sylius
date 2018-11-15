@@ -4,7 +4,7 @@
 Products
 ========
 
-**Product** model represents unique products in your Sylius store.
+The **Product** model represents unique products in your Sylius store.
 Every product can have different variations and attributes.
 
 .. warning::
@@ -44,22 +44,22 @@ Variants
 
 **ProductVariant** represents a unique kind of product and can have its own pricing configuration, inventory tracking etc.
 
-Variants may be created out of Options of the product, but you are also able to use product variations system without the options at all.
+Variants may be created out of Options of the product, but you are also able to use product variations system without the Options at all.
 
 Virtual Product Variants, that do not require shipping
 ------------------------------------------------------
 
 .. tip::
 
-     On the ProductVariant there is a possibility to make a product virtual - by setting its ``shippingRequired`` property to ``false``.
-     In such a way you can have products that will be downloadable or installable for instance.
+     On the ProductVariant there is the possibility to make a product virtual - by setting its ``shippingRequired`` property to ``false``.
+     This can be used for non-physical products that for example will be downloadable or installable.
 
 How to create a Product with a Variant?
 ---------------------------------------
 
-You may need to sell product in different Variants - for instance you may need to have books both in hardcover and in paperback.
-Just like before, use a factory, create the product, save it in the Repository.
-And then using the ProductVariantFactory create a variant for your product.
+You may need to sell a product in different Variants - for instance, you may have a book, both as hardcover and paperback.
+Just like before, to create the product use its factory and save it with the repository.
+After that, use the ProductVariantFactory to create a variant of your product.
 
 .. code-block:: php
 
@@ -78,7 +78,7 @@ Having created a Variant, provide it with the required attributes and attach it 
      $productVariant->setPosition(1);
      $productVariant->setProduct($product);
 
-Finally save your Variant in the database using a repository.
+Finally save your Variant in the database using the repository.
 
 .. code-block:: php
 
@@ -91,7 +91,7 @@ Options
 =======
 
 In many cases, you will want to have product with different variations.
-The simplest example would be a piece of clothing, like a T-Shirt available in different sizes and colors
+The simplest example would be a piece of clothing, like a T-Shirt, available in different sizes and colors
 or a glass available in different shapes or colors.
 In order to automatically generate appropriate variants, you need to define options.
 
@@ -144,14 +144,14 @@ Firstly let's learn how to prepare an exemplary Option and its values.
          $option->addValue($optionValue);
      }
 
-After you have an Option created and you keep it as ``$option`` variable let's add it to the Product and generate **Variants**.
+After you have created an Option and you keep it as ``$option`` variable let's add it to the Product and generate **Variants**.
 
 .. code-block:: php
 
      // Assuming that you have a basic product let's add the previously created option to it.
      $product->addOption($option);
 
-     // Having option of a product you can generate variants. Sylius has a service for that operation.
+     // Having options of a product you can generate variants. Sylius has a service for that operation.
      /** @var ProductVariantGeneratorInterface $variantGenerator */
      $variantGenerator = $this->get('sylius.generator.product_variant');
 
